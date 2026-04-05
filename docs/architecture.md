@@ -2,7 +2,8 @@
 
 ## Overview
 
-TaskApp is a cloud-native task management application deployed on AWS using a production-grade Kubernetes cluster. The architecture follows industry best practices for high availability, security, and scalability across three Availability Zones in the us-east-1 (N. Virginia) region.
+TaskApp is a cloud-native task management application deployed on AWS using a production grade Kubernetes cluster.
+The architecture follows industry best practices for high availability, security, and scalability across three Availability Zones in the us-east-1 (N. Virginia) region.
 
 **Live URL:** https://taskapp.terabbyte.online
 **API Endpoint:** https://api.terabbyte.online/api/health
@@ -10,7 +11,7 @@ TaskApp is a cloud-native task management application deployed on AWS using a pr
 
 ## Architecture Diagram
 
-![TaskApp Architecture](screenshots/architecture-diagram.png)
+![alt text](Capstone.svg)
 
 ---
 

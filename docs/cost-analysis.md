@@ -55,10 +55,10 @@ NAT Gateways account for **71.6%** of total infrastructure cost ($205.20 out of 
 
 ## AWS Pricing Calculator Screenshots
 
-![Estimate Summary](screenshots/aws-calculator-summary.png)
+![alt text](<Screenshot 2026-04-02 at 10.29.25 PM.png>)
 *AWS Pricing Calculator — Total estimate: $286.60/month ($3,439.20/year)*
 
-![Service Breakdown](screenshots/aws-calculator-services.png)
+![alt text](<Screenshot 2026-04-02 at 10.29.48 PM.png>)
 *AWS Pricing Calculator — Per-service cost breakdown*
 
 ---
