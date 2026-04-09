@@ -12,6 +12,8 @@ spec:
     rbac: {}
   channel: stable
   cloudProvider: aws
+  dnsZone: DNS_ZONE_PLACEHOLDER
+
 
   kubernetesApiAccess:
     - 0.0.0.0/0
@@ -95,7 +97,6 @@ spec:
       version: 3.5.13
 
   kubernetesVersion: 1.29.6
-  dnsZone: k8s.DOMAIN_PLACEHOLDER
 
   kubelet:
     anonymousAuth: false

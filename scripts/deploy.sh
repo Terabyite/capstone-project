@@ -6,10 +6,10 @@ YELLOW='\033[1;33m'
 CYAN='\033[0;36m'
 NC='\033[0m'
 
-log()  { echo -e "${GREEN}[+] $1${NC}"; }
-warn() { echo -e "${YELLOW}[!] $1${NC}"; }
-err()  { echo -e "${RED}[-] $1${NC}"; exit 1; }
-info() { echo -e "${CYAN}[>] $1${NC}"; }
+log()  { printf "${GREEN}[+] $1${NC}"; }
+warn() { printf "${YELLOW}[!] $1${NC}"; }
+err()  { printf "${RED}[-] $1${NC}"; exit 1; }
+info() { printf "${CYAN}[>] $1${NC}"; }
 
 export AWS_REGION="${AWS_REGION:-us-east-1}"
 export DOMAIN_NAME="${DOMAIN_NAME:?Set DOMAIN_NAME env var}"
@@ -49,6 +49,7 @@ phase1_terraform() {
 
     export VPC_ID=$(terraform output -raw vpc_id)
     export ETCD_BUCKET=$(terraform output -raw etcd_backups_bucket)
+    export K8S_ZONE_ID=$(terraform output -raw k8s_zone_id)
     PRIV_A=$(terraform output -json private_subnet_ids | jq -r '.[0]')
     PRIV_B=$(terraform output -json private_subnet_ids | jq -r '.[1]')
     PRIV_C=$(terraform output -json private_subnet_ids | jq -r '.[2]')
@@ -122,6 +123,7 @@ phase3_kops() {
     info "Phase 3: Creating Kubernetes cluster with Kops..."
 
     sed -e "s|DOMAIN_PLACEHOLDER|${DOMAIN_NAME}|g" \
+        -e "s|DNS_ZONE_PLACEHOLDER|${K8S_ZONE_ID}|g" \
         -e "s|VPC_ID_PLACEHOLDER|${VPC_ID}|g" \
         -e "s|PRIV_SUBNET_A|${PRIV_A}|g" \
         -e "s|PRIV_SUBNET_B|${PRIV_B}|g" \
